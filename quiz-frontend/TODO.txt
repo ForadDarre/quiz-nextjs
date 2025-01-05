@@ -1,0 +1,20 @@
+DB:
+-   Add new entity - Quiz
+-   Add QuizId to Questions
+-   Populate Quizes
+-   Populate Questions
+
+BE:
+-   Add QuizesController
+-   Add API endpoint to get all quizes
+-   Add API endpoint to get all questions for quiz with {Id}
+
+FE:
+-   Add Main page (you can select quizes there)
+-   Quizes will be populated on build (use generateStaticParams)
+-   When user selects a quiz, we redirect a user to /quiz/{id}
+-   On /quiz/{id} (I guess it is a page.tsx file inside the [id] folder) do fetchQuestions and display all the questions
+-   Add correct funcionality to the /quiz/{id} page
+
+Containerazation
+-   Add all the docker things
