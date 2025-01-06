@@ -1,0 +1,9 @@
+CREATE TABLE quizzes (
+  id SERIAL PRIMARY KEY,
+  name TEXT NOT NULL,
+);
+
+INSERT INTO quizzes (name)
+VALUES 
+('Capitals'),
+('Numbers');

@@ -4,7 +4,10 @@
         "module": "commonjs",
         "outDir": "./dist",
         "rootDir": "./src",
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
         "strict": true,
+        "moduleResolution": "node",
         "esModuleInterop": true, // Enable this flag
         "skipLibCheck": true // Optional: Speeds up TypeScript compilation
     }

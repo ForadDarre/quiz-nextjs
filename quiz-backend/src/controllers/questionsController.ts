@@ -1,10 +1,13 @@
 import { Request, Response } from "express";
-import pool from "../db/db";
+import { AppDataSource } from "../ormconfig";
+import { Question } from "../entities/question";
 
 export const getQuestions = async (req: Request, res: Response) => {
     try {
-        const result = await pool.query("SELECT * FROM questions");
-        res.status(200).json(result.rows);
+        const questionRepository = AppDataSource.getRepository(Question);
+        const questions: Question[] = await questionRepository.find(); // Fetch all questions
+        console.log(questions);
+        res.status(200).json(questions);
     } catch (err) {
         console.error(err);
         res.status(500).json({ error: "Database error" });

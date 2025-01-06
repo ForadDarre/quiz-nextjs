@@ -11,6 +11,7 @@ interface Question {
 const fetchQuestions = async (): Promise<Question[]> => {
     try {
         const response = await axios.get("http://localhost:5000/api/questions");
+        // console.log(response);
         return response.data;
     } catch (error) {
         console.error("Error fetching questions:", error);

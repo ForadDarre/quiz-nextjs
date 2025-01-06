@@ -1,11 +1,13 @@
 CREATE TABLE questions (
-  id SERIAL PRIMARY KEY,
-  text TEXT NOT NULL,
-  options TEXT[] NOT NULL,
-  answer TEXT NOT NULL
+    id SERIAL PRIMARY KEY,
+    text TEXT NOT NULL,
+    options TEXT[] NOT NULL,
+    answer TEXT NOT NULL,
+    quizId INTEGER REFERENCES quizzes(id) -- Foreign key to the quizzes table
 );
 
-INSERT INTO questions (text, options, answer)
+INSERT INTO questions (text, options, answer, "quizId")
 VALUES 
-('What is the capital of France?', ARRAY['Paris', 'Berlin', 'Madrid'], 'Paris'),
-('What is 2 + 2?', ARRAY['3', '4', '5'], '4');
+('What is the capital of France?', ARRAY['Paris', 'Berlin', 'Madrid'], 'Paris', 1),
+('What is the capital of Spain?', ARRAY['Paris', 'Madrid', 'Barcelona'], 'Madrid', 1),
+('What is 2 + 2?', ARRAY['3', '4', '5'], '4', 2);

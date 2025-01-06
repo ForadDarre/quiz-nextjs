@@ -1,16 +1,21 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm";
+import { Quiz } from "./quiz";
 
-@Entity()
+@Entity("questions") // Ensure it maps to the "questions" table
 export class Question {
     @PrimaryGeneratedColumn()
-    id: number;
+    id: number = 0;
 
-    @Column()
-    text: string;
+    @Column("text")
+    text: string = "";
 
-    @Column("simple-array") // TypeORM supports arrays with "simple-array"
-    options: string[];
+    @Column("text", { array: true })
+    options: string[] = [];
 
-    @Column()
-    answer: string; // You can omit this field in responses to hide it from users
+    @Column("text")
+    answer: string = "";
+
+    // Many Questions can belong to one Quiz
+    @ManyToOne(() => Quiz, (quiz) => quiz.questions)
+    quiz!: Quiz; // This will be the relation to the Quiz entity
 }
