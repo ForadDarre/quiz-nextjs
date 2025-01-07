@@ -27,6 +27,11 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+.max-height-width {
+    height: 100%;
+    width: 100%;
+}
+
 .center-horizontally-and-vertically {
     display: flex;
     align-items: center;

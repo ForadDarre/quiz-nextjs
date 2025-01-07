@@ -7,6 +7,7 @@ export const getQuizzes = async (req: Request, res: Response) => {
     try {
         const quizRepository = AppDataSource.getRepository(Quiz);
         const quizzes: Quiz[] = await quizRepository.find(); // Fetch all quizzes
+        console.log(quizzes);
         res.status(200).json(quizzes);
     } catch (err) {
         console.error(err);

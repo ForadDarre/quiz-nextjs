@@ -1,17 +1,10 @@
 import { FC } from "react";
 import axios from "axios";
-
-interface Question {
-    id: number;
-    text: string;
-    options: string[];
-    answer: string; // Hidden from the user
-}
+import { Question } from "../models/question";
 
 const fetchQuestions = async (): Promise<Question[]> => {
     try {
         const response = await axios.get("http://localhost:5000/api/questions");
-        // console.log(response);
         return response.data;
     } catch (error) {
         console.error("Error fetching questions:", error);
