@@ -35,6 +35,8 @@ export const getQuestionsByQuizId = async (req: Request, res: Response) => {
                 .json({ error: "No questions found for this quiz" });
         }
 
+        console.log(questions);
+
         res.status(200).json(questions);
     } catch (err) {
         console.error(err);

@@ -1,9 +1,7 @@
 FE:
--   Add Main page (you can select quizes there)
--   Quizzes will be populated on build (use generateStaticParams)
--   When user selects a quiz, we redirect a user to /quiz/{id}
--   On /quiz/{id} (I guess it is a page.tsx file inside the [id] folder) do fetchQuestions and display all the questions
 -   Add correct funcionality to the /quiz/{id} page
+-   Style Main Page
+-   Style Quiz Page
 
 Containerazation
 -   Add all the docker things

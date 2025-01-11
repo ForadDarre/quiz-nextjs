@@ -1,31 +1,36 @@
-import React, { FC } from "react";
-import axios from "axios";
+import Link from "next/link";
+import { Quiz } from "./models/quiz";
 
-// This will generate static params at build time
 export async function generateStaticParams() {
-    try {
-        const res = await axios.get("http://localhost:5000/api/quizzes");
-        const quizzes = res.data;
+    const res = await fetch("http://localhost:5000/api/quizzes", {
+        cache: "force-cache", // Ensures it's fetched only at build time
+    });
 
-        // Return quizzes to generate paths
-        return quizzes.map((quiz: { id: number }) => ({
-            quizId: quiz.id.toString(),
-        }));
-    } catch (error) {
-        console.error("Error fetching quizzes:", error);
-        return [];
+    if (!res.ok) {
+        throw new Error("Failed to fetch quizzes");
     }
+
+    const quizzes: Quiz[] = await res.json();
+    return quizzes.map((quiz) => ({ id: quiz.id.toString() }));
 }
 
-export default async function Home({ quizzes }: any) {
+const HomePage = async () => {
+    const quizzes = await fetch("http://localhost:5000/api/quizzes", {
+        cache: "force-cache",
+    }).then((res) => res.json());
+
     return (
-        <div className="max-height-width center-horizontally-and-vertically">
-            <h1>Quizzes</h1>
+        <div>
+            <h1>Available Quizzes</h1>
             <ul>
-                {quizzes.map((quiz: any) => (
-                    <li key={quiz.id}>{quiz.name}</li>
+                {quizzes.map((quiz: Quiz) => (
+                    <li key={quiz.id}>
+                        <Link href={`/quiz/${quiz.id}`}>{quiz.name}</Link>
+                    </li>
                 ))}
             </ul>
         </div>
     );
-}
+};
+
+export default HomePage;
