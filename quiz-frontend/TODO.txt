@@ -1,7 +1,5 @@
 FE:
--   Add correct funcionality to the /quiz/{id} page
--   Style Main Page
--   Style Quiz Page
+-   Add themes to MUI
 
 Containerazation
 -   Add all the docker things

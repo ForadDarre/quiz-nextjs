@@ -8,6 +8,7 @@ $tertiary-color: #4d9d98;
 $error-color: #ff5449;
 $background-color: #12140e;
 $neutral-color: #91918b;
+$white-color: #ffffff;
 
 :root {
     --background: $background-color;
@@ -36,4 +37,9 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.header-text {
+    font-size: 24px;
+    font-weight: 600;
 }
